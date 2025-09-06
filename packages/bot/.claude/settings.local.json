@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(npm install pino pino-pretty)",
+      "Bash(npm install:*)",
+      "Read(//Users/aaron/projects/discord-analytics/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

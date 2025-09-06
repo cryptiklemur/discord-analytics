@@ -1,0 +1,28 @@
+{
+  "name": "discord-analytics",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Discord Analytics monorepo",
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "format": "npm run format --workspaces --if-present",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "site:dev": "npm run dev -w @discord-analytics/site",
+    "bot:dev": "npm run dev -w @discord-analytics/bot"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "typescript": "^5.7.3"
+  }
+}
