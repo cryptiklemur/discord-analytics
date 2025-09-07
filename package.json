@@ -6,23 +6,24 @@
   "author": "",
   "license": "MIT",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "packageManager": "pnpm@9.15.2",
   "scripts": {
-    "dev": "npm run dev --workspaces --if-present",
-    "build": "npm run build --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present",
-    "format": "npm run format --workspaces --if-present",
-    "typecheck": "npm run typecheck --workspaces --if-present",
-    "clean": "npm run clean --workspaces --if-present",
-    "site:dev": "npm run dev -w @discord-analytics/site",
-    "bot:dev": "npm run dev -w @discord-analytics/bot"
+    "dev": "pnpm --parallel --filter './packages/*' dev",
+    "build": "pnpm --filter './packages/*' build",
+    "start": "pnpm --filter './packages/*' start",
+    "lint": "pnpm --filter './packages/*' lint",
+    "format": "pnpm --filter './packages/*' format",
+    "typecheck": "pnpm --filter './packages/*' typecheck",
+    "clean": "pnpm --filter './packages/*' clean",
+    "site:dev": "pnpm --filter @discord-analytics/site dev",
+    "bot:dev": "pnpm --filter @discord-analytics/bot dev",
+    "bot:start": "pnpm --filter @discord-analytics/bot start"
   },
   "devDependencies": {
-    "@types/node": "^22.10.6",
-    "typescript": "^5.7.3"
+    "@types/node": "^24.3.1",
+    "typescript": "^5.9.2"
   }
 }

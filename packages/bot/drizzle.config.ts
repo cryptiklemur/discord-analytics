@@ -19,7 +19,7 @@ function getConnectionString(): string {
 }
 
 export default {
-  schema: './src/db/schema.ts',
+  schema: '../shared/src/db/schema.ts',
   out: './drizzle',
   driver: 'pg',
   dbCredentials: {

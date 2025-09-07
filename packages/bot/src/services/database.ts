@@ -39,7 +39,7 @@ export class DrizzleService implements DatabaseService {
       const result = await db
         .select({ id: servers.id })
         .from(servers)
-        .where(eq(servers.id, serverId))
+        .where(eq(servers.id as any, serverId) as any)
         .limit(1);
 
       const exists = result.length > 0;

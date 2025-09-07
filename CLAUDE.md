@@ -18,7 +18,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `npm run clean` - Clean all build artifacts
 
 ### Package-Specific Commands
-- **Bot**: `npm run dev -w @discord-analytics/bot` - Run bot with tsx watch
+- **Bot**: `npm run dev -w @discord-analytics/bot` - Run bot in development with tsx watch
+- **Bot**: `npm run start -w @discord-analytics/bot` - Run bot in production with tsx (no build needed)
 - **Site**: `npm run dev -w @discord-analytics/site` - Run Next.js with Turbopack
 - **Shared**: `npm run build -w @discord-analytics/shared` - Build shared library
 
@@ -35,7 +36,8 @@ This is a Discord Analytics monorepo with three npm workspace packages that coll
 
 **Bot Package:**
 - **Discord.js v14** with comprehensive event handling
-- **Drizzle ORM** with PostgreSQL for data persistence
+- **TSX** for TypeScript execution (no build step required)
+- **Drizzle ORM** with PostgreSQL for data persistence (via shared package)
 - **Supabase** for database hosting and auth integration
 - **Pino** structured logging with pretty printing in development
 - Event queue system for reliable data processing
@@ -173,3 +175,4 @@ When working on this project:
 - Assume dual-database architecture (Supabase + time-series DB)
 - Consider data pipeline and aggregation strategies for efficient queries
 - Prioritize actionable insights over vanity metrics
+- use pnpm

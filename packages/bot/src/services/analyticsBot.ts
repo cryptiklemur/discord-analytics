@@ -50,6 +50,10 @@ export class AnalyticsBot {
 			logger.info({ serverCount: this.client.guilds.cache.size }, 'Analytics bot online');
 		});
 
+		this.client.on('error', (error) => {
+			logger.error({ error }, 'Discord client error');
+		});
+
 		this.client.on(this.messageHandler.getEventName(),
 			(message) => this.messageHandler.handleMessage(message));
 
@@ -70,8 +74,19 @@ export class AnalyticsBot {
 	}
 
 	async start(): Promise<void> {
-		this.eventQueue.start();
-		await this.client.login(this.config.discord.botToken);
+		try {
+			this.eventQueue.start();
+			logger.info('Starting Discord client login...');
+			await this.client.login(this.config.discord.botToken);
+			logger.info('Discord client logged in successfully');
+		} catch (error) {
+			logger.error({ 
+				error: error instanceof Error ? { message: error.message, stack: error.stack } : error,
+				errorType: typeof error,
+				errorConstructor: error?.constructor?.name 
+			}, 'Failed to login to Discord');
+			throw error;
+		}
 	}
 
 	async stop(): Promise<void> {

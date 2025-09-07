@@ -1,7 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install)"
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run typecheck:*)",
+      "Bash(node:*)",
+      "Bash(npm run dev:*)",
+      "Bash(find:*)",
+      "Bash(tsx test-exports.mjs:*)",
+      "Bash(pnpm install:*)",
+      "Bash(sed:*)",
+      "Bash(npm config delete:*)",
+      "Bash(nvm use:*)",
+      "Bash(npm config:*)",
+      "Bash(pnpm run:*)"
     ],
     "deny": [],
     "ask": []
