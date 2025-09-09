@@ -46,8 +46,13 @@ export class AnalyticsBot {
 	}
 
 	private setupEventHandlers(): void {
-		this.client.once(Events.ClientReady, () => {
+		this.client.once(Events.ClientReady, async () => {
 			logger.info({ serverCount: this.client.guilds.cache.size }, 'Analytics bot online');
+			
+			// Ensure all current guilds have server records
+			for (const guild of this.client.guilds.cache.values()) {
+				await this.guildHandler.handleGuildCreate(guild);
+			}
 		});
 
 		this.client.on('error', (error) => {

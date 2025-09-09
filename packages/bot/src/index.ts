@@ -9,6 +9,8 @@ const logger = createLogger('main');
 async function main(): Promise<void> {
   try {
     const databaseService = new SupabaseService();
+    
+
     const eventQueue = new MemoryEventQueue(databaseService, config.bot);
     const bot = new AnalyticsBot(config, databaseService, eventQueue);
 

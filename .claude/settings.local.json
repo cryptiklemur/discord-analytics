@@ -14,7 +14,8 @@
       "Bash(npm config delete:*)",
       "Bash(nvm use:*)",
       "Bash(npm config:*)",
-      "Bash(pnpm run:*)"
+      "Bash(pnpm run:*)",
+      "Bash(pnpm typecheck:*)"
     ],
     "deny": [],
     "ask": []

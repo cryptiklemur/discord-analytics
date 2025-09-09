@@ -14,10 +14,15 @@ export class GuildHandler {
       const serverExists = await this.databaseService.checkServerExists(guild.id);
 
       if (!serverExists) {
-        logger.warn({ guildId: guild.id }, 'Server not found in database - user needs to connect via web app');
+        logger.info({ guildId: guild.id }, 'Creating server record in database');
+        await this.databaseService.createServer(
+          guild.id,
+          guild.name,
+          guild.ownerId
+        );
       }
     } catch (error) {
-      logger.error({ error, guildId: guild.id }, 'Error checking server authorization');
+      logger.error({ error, guildId: guild.id }, 'Error handling guild create');
     }
   }
 
